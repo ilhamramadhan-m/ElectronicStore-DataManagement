@@ -1,4 +1,4 @@
-# 🛍️ Smart Inventory & Transaction Management for Wisantoko Electronic Store
+# 🛍️ Smart Inventory & Transaction Management for Electronic Store
 
 ## 📌 Background
 
