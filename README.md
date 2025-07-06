@@ -1,65 +1,75 @@
-# 🛍️ Smart Inventory & Transaction Management for Electronic Store
+# 🛍️ Manajemen Inventaris & Transaksi Pintar untuk Toko Elektronik
 
-## 📌 Background
+## 📌 Latar Belakang
 
-In today’s fast-paced retail environment, efficient information management is key to operational success. **Wisantoko Electronic Store**, like many small-to-medium businesses, faced challenges in handling product inventory and transaction data. Customers often encountered delays due to disorganized stock information and limited access to real-time product details.
+Dalam dunia ritel yang bergerak cepat saat ini, pengelolaan informasi yang efisien menjadi kunci kesuksesan operasional. **Wisantoko Electronic Store**, seperti banyak bisnis kecil hingga menengah lainnya, menghadapi tantangan dalam mengelola data inventaris produk dan transaksi. Pelanggan kerap mengalami keterlambatan akibat informasi stok yang tidak terorganisir dan keterbatasan akses terhadap data produk secara real-time.
 
-To address these issues, this project implements a structured **relational database system using MySQL**, aiming to optimize store operations, enhance the customer experience, and streamline internal processes like stock management and invoicing.
+Untuk mengatasi permasalahan tersebut, proyek ini mengembangkan sistem **basis data relasional menggunakan MySQL** yang bertujuan mengoptimalkan operasional toko, meningkatkan pengalaman pelanggan, dan merapikan proses internal seperti manajemen stok dan pembuatan nota transaksi.
 
-## 🛠 Methodology
+## 🛠 Metodologi
 
-The project development includes the following stages:
+Tahapan pengembangan proyek meliputi:
 
-1. **Needs Analysis**: Identify bottlenecks in current operations such as stock lookup delays and transaction inefficiencies.
-2. **Database Design & Normalization**:
+1. **Analisis Kebutuhan**
+   Mengidentifikasi hambatan operasional, seperti keterlambatan pengecekan stok dan ketidakefisienan proses transaksi.
 
-   * Design entities based on store operations: Customers, Products, Membership, Shipping, Payments, etc.
-   * Apply **1NF, 2NF, and 3NF** normalization to reduce redundancy and ensure data integrity.
-3. **ERD & Relational Schema Construction**:
+2. **Perancangan & Normalisasi Basis Data**
 
-   * Model complex **Many-to-Many** relationships using junction tables like `DetailTransaksi`.
-   * Implement **One-to-Many** relationships among key entities (e.g., Membership → Customer).
-4. **Trigger Implementation**:
+   * Mendesain entitas berdasarkan proses bisnis toko: Pelanggan, Produk, Keanggotaan, Pengiriman, Pembayaran, dan sebagainya.
+   * Menerapkan **1NF, 2NF, dan 3NF** untuk menghindari redundansi dan menjaga integritas data.
 
-   * Auto-update stock on purchase or restock.
-   * Maintain inventory consistency (e.g., trigger auto-replenish if stock < 20).
-5. **Stored Procedures**:
+3. **Pembuatan ERD & Skema Relasional**
 
-   * `generate_invoice` & `generate_invoice_pertransaction`: Generate complete transactional receipts.
-   * `calculate_subtotal`: Compute total price including discount, shipping, and membership benefits.
-6. **Advanced SQL Queries**:
+   * Memodelkan relasi **Many-to-Many** menggunakan tabel penghubung seperti `DetailTransaksi`.
+   * Menerapkan relasi **One-to-Many** antar entitas utama (misalnya: Membership → Pelanggan).
 
-   * Identify **most and least sold products**, and track **monthly sales trends**.
-   * Filter product sales by specific month on request.
+4. **Implementasi Trigger**
 
-## 📊 Key Features & Results
+   * Otomatisasi pengurangan stok saat pembelian atau pengisian ulang.
+   * Menjaga konsistensi inventaris (misalnya: sistem akan otomatis menandai produk untuk pengisian ulang jika stok < 20).
 
-* **Real-Time Inventory Update**: Stock is auto-reduced on purchase and replenished if understocked.
-* **Comprehensive Invoicing System**: Aggregated invoices including fees, discounts, and shipping.
-* **Sales Insights**:
+5. **Stored Procedure**
 
-  * Most sold product: *Samsung Upright Vacuum Cleaner – Orange Sunset*.
-  * Least sold category: *Refrigerators*.
-  * Detailed monthly sales per product and per transaction.
-* **Data Normalization Benefits**: Avoid redundancy and allow scalable data management.
-* **Custom Procedures & Triggers**: Reduce manual input, automate routine calculations, and prevent inconsistencies.
+   * `generate_invoice` & `generate_invoice_pertransaction`: Membuat nota transaksi lengkap.
+   * `calculate_subtotal`: Menghitung total harga termasuk diskon, biaya kirim, dan keuntungan membership.
 
-## 📦 Technologies Used
+6. **Query SQL Lanjutan**
 
-* **Database**: MySQL
-* **Data Design**: Entity-Relationship Diagram (ERD), Normal Forms
-* **SQL Features**: Views, Stored Procedures, Triggers, Joins, Grouping, Conditional Queries
+   * Mengidentifikasi **produk terlaris dan tidak laku**, serta tren penjualan per bulan.
+   * Menyaring penjualan produk berdasarkan bulan tertentu sesuai permintaan.
 
-## 🔍 Example Use Cases
+## 📊 Fitur & Hasil Utama
 
-* A cashier enters a new transaction — the system:
+* **Update Inventaris Real-Time**: Stok otomatis berkurang saat pembelian dan sistem memberi peringatan untuk isi ulang saat stok rendah.
+* **Sistem Nota Komprehensif**: Nota mencakup subtotal, diskon, biaya kirim, dan bunga berdasarkan membership.
+* **Insight Penjualan**:
 
-  * Deducts stock,
-  * Calculates subtotal including discounts,
-  * Adds shipping cost & payment interest based on membership,
-  * Generates an invoice for the customer in a single row.
-* Management views a report of all products sold this month, identifies low-performing products, and triggers a stock restock operation.
+  * Produk terlaris: *Samsung Upright Vacuum Cleaner – Orange Sunset*
+  * Kategori terendah penjualan: *Refrigerators*
+  * Analisis penjualan bulanan secara detail per produk dan per transaksi.
+* **Keuntungan Normalisasi**: Menghindari data ganda dan mempermudah pengelolaan data skala besar.
+* **Stored Procedure & Trigger Kustom**: Mengurangi input manual, mengotomatisasi perhitungan rutin, dan mencegah inkonsistensi data.
 
-## 📎 Data Access
+## 📦 Teknologi yang Digunakan
 
-🔗 [Raw Dataset & SQL Scripts (ITS Cloud)](https://github.com/ilhamramadhan-m/ElectronicStore-DataManagement/blob/main/Electronic%20Store's%20Selling%20RDBMS.xlsx)
+* **Basis Data**: MySQL
+* **Desain Data**: Entity-Relationship Diagram (ERD), Normal Forms
+* **Fitur SQL**: Views, Stored Procedures, Triggers, Joins, Grouping, Conditional Queries
+
+## 🔍 Contoh Penggunaan
+
+* Seorang kasir mencatat transaksi baru — sistem akan secara otomatis:
+
+  * Mengurangi stok produk,
+  * Menghitung subtotal (termasuk diskon),
+  * Menambahkan biaya kirim dan bunga berdasarkan membership,
+  * Menghasilkan satu baris invoice lengkap untuk pelanggan.
+* Manajemen ingin melihat laporan penjualan bulan ini — sistem:
+
+  * Menampilkan semua produk yang terjual,
+  * Menyoroti produk dengan performa rendah,
+  * Memicu pengisian ulang stok secara otomatis untuk produk yang hampir habis.
+
+## 📎 Akses Data
+
+🔗 [Dataset Mentah & Skrip SQL](https://github.com/ilhamramadhan-m/ElectronicStore-DataManagement/blob/main/Electronic%20Store's%20Selling%20RDBMS.xlsx)
